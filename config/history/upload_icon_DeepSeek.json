@@ -1,0 +1,152 @@
+[
+  {
+    "x": 1066.3333740234375,
+    "y": 439.0,
+    "timestamp": 1774023050.5881064,
+    "date": "2026-03-21 00:10:50",
+    "metadata": {
+      "classes": "ds-icon-button__hover-bg",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 422,
+        "width": 34,
+        "height": 34
+      },
+      "success_method": "direct_hit",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 439.0,
+    "timestamp": 1774007171.893225,
+    "date": "2026-03-20 19:46:11",
+    "metadata": {
+      "classes": "ds-icon-button__hover-bg",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 422,
+        "width": 34,
+        "height": 34
+      },
+      "success_method": "nearby_hit",
+      "original_coord": {
+        "x": 1066.3333740234375,
+        "y": 465.0
+      },
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 465.0,
+    "timestamp": 1774004582.8109272,
+    "date": "2026-03-20 19:03:02",
+    "metadata": {
+      "classes": "ds-icon-button__hover-bg",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 448,
+        "width": 34,
+        "height": 34
+      },
+      "success_method": "direct_hit",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 465.0,
+    "timestamp": 1774004253.0826793,
+    "date": "2026-03-20 18:57:33",
+    "metadata": {
+      "classes": "ds-icon-button__hover-bg",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 448,
+        "width": 34,
+        "height": 34
+      },
+      "success_method": "nearby_hit",
+      "original_coord": {
+        "x": 1066.3333740234375,
+        "y": 439.0
+      },
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 439.0,
+    "timestamp": 1773770049.1078677,
+    "date": "2026-03-18 01:54:09",
+    "metadata": {
+      "tooltip": "",
+      "classes": "ds-icon-button__hover-bg",
+      "aria": "",
+      "title": "",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 422,
+        "width": 34,
+        "height": 34
+      },
+      "action": "upload_success",
+      "source": "final_save"
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 439.0,
+    "timestamp": 1773770048.706526,
+    "date": "2026-03-18 01:54:08",
+    "metadata": {
+      "classes": "ds-icon-button__hover-bg",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 422,
+        "width": 34,
+        "height": 34
+      },
+      "success_method": "direct_hit",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 439.0,
+    "timestamp": 1773769842.5739052,
+    "date": "2026-03-18 01:50:42",
+    "metadata": {
+      "tooltip": "",
+      "classes": "ds-icon-button__hover-bg",
+      "aria": "",
+      "title": "",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 422,
+        "width": 34,
+        "height": 34
+      },
+      "action": "upload_success",
+      "source": "final_save"
+    }
+  },
+  {
+    "x": 1066.3333740234375,
+    "y": 439.0,
+    "timestamp": 1773769842.1439743,
+    "date": "2026-03-18 01:50:42",
+    "metadata": {
+      "classes": "ds-icon-button__hover-bg",
+      "box": {
+        "x": 1049.3333740234375,
+        "y": 422,
+        "width": 34,
+        "height": 34
+      },
+      "success_method": "direct_hit",
+      "tooltip": ""
+    }
+  }
+]

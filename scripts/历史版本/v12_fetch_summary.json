@@ -1,0 +1,64 @@
+{
+  "fetch_time": "2026-02-12T22:31:38.228957",
+  "my_id": "s673090",
+  "success": 11,
+  "failed": 0,
+  "retried": 0,
+  "results": [
+    {
+      "id": "s801573",
+      "name": "s801573",
+      "status": "success"
+    },
+    {
+      "id": "s733504",
+      "name": "s733504",
+      "status": "success"
+    },
+    {
+      "id": "s682083",
+      "name": "s682083",
+      "status": "success"
+    },
+    {
+      "id": "s929270",
+      "name": "s929270",
+      "status": "success"
+    },
+    {
+      "id": "s798268",
+      "name": "s798268",
+      "status": "success"
+    },
+    {
+      "id": "s811385",
+      "name": "s811385",
+      "status": "success"
+    },
+    {
+      "id": "s865585",
+      "name": "s865585",
+      "status": "success"
+    },
+    {
+      "id": "s783729",
+      "name": "s783729",
+      "status": "success"
+    },
+    {
+      "id": "s400192",
+      "name": "s400192",
+      "status": "success"
+    },
+    {
+      "id": "s823700",
+      "name": "s823700",
+      "status": "success"
+    },
+    {
+      "id": "s673090",
+      "name": "s673090",
+      "status": "success"
+    }
+  ]
+}

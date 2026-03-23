@@ -1,0 +1,57 @@
+[
+  {
+    "x": 370.0,
+    "y": 604.6666870117188,
+    "timestamp": 1774023161.8408482,
+    "date": "2026-03-21 00:12:41",
+    "metadata": {
+      "source": "response_relative",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 370.0,
+    "y": 604.6666870117188,
+    "timestamp": 1774007273.9735596,
+    "date": "2026-03-20 19:47:53",
+    "metadata": {
+      "source": "response_relative",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 370.0,
+    "y": 656.6666870117188,
+    "timestamp": 1774004677.7481499,
+    "date": "2026-03-20 19:04:37",
+    "metadata": {
+      "source": "response_relative",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 370.0,
+    "y": 656.6666870117188,
+    "timestamp": 1774004345.706739,
+    "date": "2026-03-20 18:59:05",
+    "metadata": {
+      "source": "response_relative",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 370.0,
+    "y": 604.6666870117188,
+    "timestamp": 1773758957.0805376,
+    "date": "2026-03-17 22:49:17",
+    "metadata": {
+      "source": "interactive",
+      "classes": "",
+      "tooltip": ""
+    }
+  }
+]

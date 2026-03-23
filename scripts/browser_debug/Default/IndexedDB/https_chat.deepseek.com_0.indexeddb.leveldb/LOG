@@ -1,0 +1,13 @@
+2026/03/21-00:10:47.048 791c Reusing MANIFEST D:\OpenClaw\JobsOfAndy\BaiduOKR_WeeklyReport\scripts\browser_debug\Default\IndexedDB\https_chat.deepseek.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/21-00:10:47.049 791c Recovering log #232
+2026/03/21-00:10:47.050 791c Reusing old log D:\OpenClaw\JobsOfAndy\BaiduOKR_WeeklyReport\scripts\browser_debug\Default\IndexedDB\https_chat.deepseek.com_0.indexeddb.leveldb/000232.log 
+2026/03/21-00:10:47.054 94d8 Level-0 table #237: started
+2026/03/21-00:10:47.058 94d8 Level-0 table #237: 3910 bytes OK
+2026/03/21-00:10:47.060 94d8 Delete type=0 #232
+2026/03/21-00:10:47.060 94d8 Manual compaction at level-0 from '\x00b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00c\x00\x00\x00' @ 0 : 0; will stop at '\x00b\x00\x00\xc8 \x00l\x00o\x00c\x00a\x00l\x00-\x00f\x00o\x00r\x00a\x00g\x00e\x00-\x00d\x00e\x00t\x00e\x00c\x00t\x00-\x00b\x00l\x00o\x00b\x00-\x00s\x00u\x00p\x00p\x00o\x00r\x00t' @ 10434 : 1
+2026/03/21-00:10:47.061 94d8 Compacting 1@0 + 1@1 files
+2026/03/21-00:10:47.068 94d8 Generated table #238@0: 133 keys, 129075 bytes
+2026/03/21-00:10:47.069 94d8 Compacted 1@0 + 1@1 files => 129075 bytes
+2026/03/21-00:10:47.070 94d8 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/21-00:10:47.070 94d8 Delete type=2 #237
+2026/03/21-00:10:47.071 791c Manual compaction at level-0 from '\x00b\x00\x00\xc8 \x00l\x00o\x00c\x00a\x00l\x00-\x00f\x00o\x00r\x00a\x00g\x00e\x00-\x00d\x00e\x00t\x00e\x00c\x00t\x00-\x00b\x00l\x00o\x00b\x00-\x00s\x00u\x00p\x00p\x00o\x00r\x00t' @ 10434 : 1 .. '\x00c\x00\x00\x00' @ 0 : 0; will stop at (end)

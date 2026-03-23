@@ -1,0 +1,26 @@
+{
+  "id": "s811385",
+  "name": "s811385",
+  "date": "2026-03-16",
+  "desc": "员工7",
+  "fetch_time": "2026-03-20T19:02:27.011785",
+  "status": "success",
+  "content": {
+    "okr_title": null,
+    "part1_work_summary": [],
+    "part2_okr_structure": [],
+    "part3_metrics": {
+      "业务核心指标": [],
+      "主要项目": [],
+      "下周重点工作": []
+    }
+  },
+  "stats": {
+    "text_length": 231,
+    "part1_count": 0,
+    "o_count": 0,
+    "kr_count": 0,
+    "weekly_work_count": 0,
+    "metrics_count": 0
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "x": 1179.8333740234375,
+    "y": 793.3333740234375,
+    "timestamp": 1773502259.184282,
+    "date": "2026-03-14 23:30:59",
+    "metadata": {
+      "action": "upload_click",
+      "source": "find_upload_icon"
+    }
+  },
+  {
+    "x": 1179.8333740234375,
+    "y": 793.3333740234375,
+    "timestamp": 1773502259.1416705,
+    "date": "2026-03-14 23:30:59",
+    "metadata": {
+      "tooltip": "上传附件（仅识别文字）最多 50 个，每个 100 MB，支持各类文档和图片",
+      "classes": "f02f0e25 ds-icon-button ds-icon-button--l ds-icon-",
+      "aria": "",
+      "title": "",
+      "box": {
+        "x": 1179.8333740234375,
+        "y": 793.3333740234375,
+        "width": 34,
+        "height": 34
+      }
+    }
+  },
+  {
+    "x": 1179.8333740234375,
+    "y": 448,
+    "timestamp": 1773501794.8080084,
+    "date": "2026-03-14 23:23:14",
+    "metadata": {
+      "action": "upload_click",
+      "source": "find_upload_icon"
+    }
+  },
+  {
+    "x": 1179.8333740234375,
+    "y": 448,
+    "timestamp": 1773501794.7647235,
+    "date": "2026-03-14 23:23:14",
+    "metadata": {
+      "tooltip": "上传附件（仅识别文字）最多 50 个，每个 100 MB，支持各类文档和图片",
+      "classes": "f02f0e25 ds-icon-button ds-icon-button--l ds-icon-",
+      "aria": "",
+      "title": "",
+      "box": {
+        "x": 1179.8333740234375,
+        "y": 448,
+        "width": 34,
+        "height": 34
+      }
+    }
+  },
+  {
+    "x": 1179.8333740234375,
+    "y": 793.3333740234375,
+    "timestamp": 1773501544.044934,
+    "date": "2026-03-14 23:19:04",
+    "metadata": {
+      "action": "upload_click",
+      "source": "find_upload_icon"
+    }
+  }
+]

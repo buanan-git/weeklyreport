@@ -1,0 +1,69 @@
+{
+  "fetch_time": "2026-02-12T11:55:55.945235",
+  "my_id": "s673090",
+  "success": 12,
+  "failed": 0,
+  "retried": 0,
+  "results": [
+    {
+      "id": "s801573",
+      "name": "翟静雨",
+      "status": "success"
+    },
+    {
+      "id": "s733504",
+      "name": "孟凡星",
+      "status": "success"
+    },
+    {
+      "id": "s682083",
+      "name": "姚甜莉",
+      "status": "success"
+    },
+    {
+      "id": "s929270",
+      "name": "赵艳",
+      "status": "success"
+    },
+    {
+      "id": "s798268",
+      "name": "管过",
+      "status": "success"
+    },
+    {
+      "id": "s811385",
+      "name": "祁建华",
+      "status": "success"
+    },
+    {
+      "id": "s865585",
+      "name": "邵银川",
+      "status": "success"
+    },
+    {
+      "id": "s783729",
+      "name": "王坤",
+      "status": "success"
+    },
+    {
+      "id": "s400192",
+      "name": "吴月",
+      "status": "success"
+    },
+    {
+      "id": "s823700",
+      "name": "赵熠坤",
+      "status": "success"
+    },
+    {
+      "id": "s673090",
+      "name": "s673090",
+      "status": "success"
+    },
+    {
+      "id": "s673090",
+      "name": "s673090",
+      "status": "success"
+    }
+  ]
+}

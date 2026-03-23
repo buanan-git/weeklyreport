@@ -1,0 +1,71 @@
+{
+  "id": "s798268",
+  "name": "管过",
+  "date": "2026-03-16",
+  "desc": "员工6",
+  "fetch_time": "2026-03-21T00:09:20.165386",
+  "status": "success",
+  "content": {
+    "okr_title": "管过的OKR",
+    "part1_work_summary": [],
+    "part2_okr_structure": [
+      {
+        "level": 1,
+        "id": "O1",
+        "title": "O1 努力保障汽车行业项目制收入与毛利的经营目标 正常",
+        "key_results": [
+          {
+            "level": 2,
+            "id": "KR1",
+            "title": "KR1 KR1保障极氪一期、二期Q2计收，总金额1387万。 80%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR2",
+            "title": "KR2 保障「苏州博世」、「无锡博世」「佑驾」「魔门塔」等项目按客户PO下单量完成数据采集、验收计收。 80%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR3",
+            "title": "KR3 聚焦吉利、极氪私有云项目，协同售前/产研/交付团队制定贴合客户需求的可落地交付方案，促成项目签约交付及验收。 70%",
+            "weekly_work": []
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "id": "O2",
+        "title": "O2 提升交付质量与效率，优化项目交付成本。 正常",
+        "key_results": [
+          {
+            "level": 2,
+            "id": "KR1",
+            "title": "KR1 以项目健康度指标为目标，按周推进红灯、黄灯项目问题处理，项目里程碑按期完成率达95% 75%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR2",
+            "title": "KR2 加强对生态DPM管理，提升交付效率，保障项目验收。 75%",
+            "weekly_work": []
+          }
+        ]
+      }
+    ],
+    "part3_metrics": {
+      "业务核心指标": [],
+      "主要项目": [],
+      "下周重点工作": []
+    }
+  },
+  "stats": {
+    "text_length": 986,
+    "part1_count": 0,
+    "o_count": 2,
+    "kr_count": 5,
+    "weekly_work_count": 0,
+    "metrics_count": 0
+  }
+}

@@ -1,0 +1,4 @@
+2026/03/20-19:46:07.999 3038 Reusing MANIFEST D:\OpenClaw\JobsOfAndy\BaiduOKR_WeeklyReport\scripts\browser_debug\Default\IndexedDB\https_chat.deepseek.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/20-19:46:08.001 3038 Recovering log #232
+2026/03/20-19:46:08.002 3038 Reusing old log D:\OpenClaw\JobsOfAndy\BaiduOKR_WeeklyReport\scripts\browser_debug\Default\IndexedDB\https_chat.deepseek.com_0.indexeddb.leveldb/000232.log 
+2026/03/20-19:46:08.009 2250 Manual compaction at level-0 from '\x00a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00b\x00\x00\x00' @ 0 : 0; will stop at (end)

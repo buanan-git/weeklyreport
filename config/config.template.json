@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "description": "团队周报自动化系统主配置文件 - 请根据你的实际情况修改",
+  "user": {
+    "my_id": "your-id-here",
+    "staff_ids": ["staff1", "staff2"]
+  },
+  "paths": {
+    "weekly_report_dir": "scripts/WeeklyReport",
+    "llm_response_dir": "scripts/llmRsp",
+    "browser_debug_dir": "scripts/browser_debug",
+    "prompts_dir": "config/prompts",
+    "history_dir": "config/history"
+  },
+  "browser": {
+    "state_file": "config/browser_state.json",
+    "mode": "headful",
+    "headless": false,
+    "debug_port_range": [9222, 9299],
+    "chrome_paths": {
+      "windows": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      ]
+    },
+    "screenshot_on_error": true
+  },
+  "weekly_report": {
+    "target_week": 0,
+    "optimize_prompt": "WeeklyReportOptimizePrompt.md",
+    "default_platform": "BS"
+  },
+  "llm_platforms": {
+    "BS": {
+      "name": "baidusqc",
+      "type": "api",
+      "url": "http://10.213.206.148:8080",
+      "api_config": {
+        "base_url": "http://10.213.206.148:8080/apis/ais-v2",
+        "api_key": "your-api-key",
+        "model": "glm-45-v1",
+        "timeout": 300,
+        "max_tokens": 16000,
+        "temperature": 0.7
+      }
+    }
+  },
+  "history": {
+    "max_records": 8,
+    "files": {
+      "copy_button": "copy_button_{platform}.json",
+      "upload_icon": "upload_icon_{platform}.json"
+    }
+  },
+  "logging": {
+    "debug": true,
+    "save_intermediate_files": true,
+    "log_level": "DEBUG"
+  }
+}

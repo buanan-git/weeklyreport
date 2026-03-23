@@ -1,0 +1,23 @@
+{
+  "fetch_time": "2026-02-13T08:09:46.522653",
+  "my_id": "s673090",
+  "success": 0,
+  "failed": 3,
+  "results": [
+    {
+      "id": "s801573",
+      "name": null,
+      "status": "error"
+    },
+    {
+      "id": "s673090",
+      "name": null,
+      "status": "error"
+    },
+    {
+      "id": "s673090",
+      "name": null,
+      "status": "error"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+============================================================
+页面标题: 写周报 - 周报
+页面URL: https://okr.baidu-int.com/pages/weekly.html#/home?date=s2026-02-16&mandatorId=s&isEdit=true
+包含 0 个表单
+============================================================
+
+============================================================
+📝 所有可交互元素:
+============================================================
+
+输入框 (Inputs):
+  [1] input
+       Type: text
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-left:nth-of-type(1) > div.weekly-head > div.head-cell > div.weekly-head-with-status:nth-of-type(2) > div.inpt-weekly-head__container.in-header:nth-of-type(1) > div.inpt-weekly-head__head-line > div.inpt-weekly-head__date-picker-input-wrapper > div.inpt-wrp-date-picker__container.inpt-wrp-date-picker__use-weekly.inpt-wrp-date-picker__ui-undefined.erp-date-picker.inpt-wrp-date-picker__size-xs.erp-date-picker-has-value.erp-date-picker-allow-clear.erp-date-picker-status-undefined:nth-of-type(1) > div.date-picker-input-wrap > div.inpt-wrp-input__container:nth-of-type(1) > div.erp-input-wrap.erp-input-size-default.erp-input-status-untouched.erp-input-read-only.erp-input-has-prefix.erp-input-has-suffix > input
+
+  [2] input
+       Type: text
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/input[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-left:nth-of-type(1) > div.weekly-head > div.head-cell > div.weekly-head-with-status:nth-of-type(2) > div.inpt-weekly-head__container.in-header:nth-of-type(1) > div.inpt-weekly-head__head-line > div.inpt-weekly-head__date-picker-input-wrapper > div.title-input-wrapper:nth-of-type(2) > div.inpt-wrp-input__container.inpt-weekly-head__title-input.inpt-weekly-head__input-blur.inpt-weekly-head__hidden > div.erp-input-wrap.erp-input-size-default.erp-input-status-untouched.erp-input-read-only > input
+
+  [3] input
+       ID: rc_select_0
+       Type: search
+       XPath: //*[@id="rc_select_0"]
+       CSS: #rc_select_0
+
+  [4] input
+       ID: rc_select_1
+       Type: search
+       XPath: //*[@id="rc_select_1"]
+       CSS: #rc_select_1
+
+  [5] input
+       ID: rc_select_2
+       Type: search
+       XPath: //*[@id="rc_select_2"]
+       CSS: #rc_select_2
+
+  [6] input
+       ID: rc_select_3
+       Type: search
+       XPath: //*[@id="rc_select_3"]
+       CSS: #rc_select_3
+
+  [7] input
+       ID: rc_select_4
+       Type: search
+       XPath: //*[@id="rc_select_4"]
+       CSS: #rc_select_4
+
+  [8] input
+       Type: text
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > main.mp-layout-main.baidu__editor__main > section.mp-layout-content-container.baidu__editor__content.okr-weekly-rte > div.baidu__editor__content__inner > div.baidu__editor__content__right > div.baidu__editor__title__noslide:nth-of-type(1) > div.head-cell > div.weekly-head-with-status:nth-of-type(1) > div.inpt-weekly-head__container > div.inpt-weekly-head__head-line.inpt-weekly-head__show-quarter > div.inpt-weekly-head__date-picker-input-wrapper > div.inpt-wrp-date-picker__container.inpt-wrp-date-picker__use-weekly.inpt-wrp-date-picker__ui-undefined.erp-date-picker.inpt-wrp-date-picker__size-xl.erp-date-picker-has-value.erp-date-picker-allow-clear.erp-date-picker-status-undefined:nth-of-type(1) > div.date-picker-input-wrap > div.inpt-wrp-input__container:nth-of-type(1) > div.erp-input-wrap.erp-input-size-default.erp-input-status-untouched.erp-input-read-only.erp-input-has-prefix.erp-input-has-suffix > input
+
+  [9] input
+       Type: text
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/input[1]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > main.mp-layout-main.baidu__editor__main > section.mp-layout-content-container.baidu__editor__content.okr-weekly-rte > div.baidu__editor__content__inner > div.baidu__editor__content__right > div.baidu__editor__title__noslide:nth-of-type(1) > div.head-cell > div.weekly-head-with-status:nth-of-type(1) > div.inpt-weekly-head__container > div.inpt-weekly-head__head-line.inpt-weekly-head__show-quarter > div.inpt-weekly-head__date-picker-input-wrapper > div.title-input-wrapper:nth-of-type(2) > div.inpt-wrp-input__container.inpt-weekly-head__title-input.inpt-weekly-head__input-blur.inpt-weekly-head__hidden > div.erp-input-wrap.erp-input-size-default.erp-input-status-untouched.erp-input-read-only > input
+
+  [10] input
+       Type: checkbox
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/label[1]/span[1]/input[1]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > main.mp-layout-main.baidu__editor__main > section.mp-layout-content-container.baidu__editor__content.okr-weekly-rte > div.baidu__editor__content__inner > div.baidu__editor__content__right > div.baidu__editor__title__noslide:nth-of-type(1) > div.head-cell > div.sub-weekly-head:nth-of-type(2) > label.erp-checkbox-standard.checkbox-wrapper.checkbox-size-middle.default-checkbox-wrapper.erp-checkbox-wrap.erp-generic-checkbox-wrap.erp-checkbox-checked > span.erp-checkbox:nth-of-type(1) > input.erp-checkbox-input
+
+  [11] input
+       Type: text
+       XPath: //*[@id="okr-block-2"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-2 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [12] input
+       Type: text
+       XPath: //*[@id="okr-block-3"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-3 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [13] input
+       Type: text
+       XPath: //*[@id="okr-block-5"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-5 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [14] input
+       Type: text
+       XPath: //*[@id="okr-block-6"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-6 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [15] input
+       Type: text
+       XPath: //*[@id="okr-block-7"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-7 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [16] input
+       Type: text
+       XPath: //*[@id="okr-block-9"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-9 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [17] input
+       Type: text
+       XPath: //*[@id="okr-block-10"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-10 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [18] input
+       Type: text
+       XPath: //*[@id="okr-block-11"]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #okr-block-11 > div.inpt-okr-node__container.node-in-okr-block > div.okr-block-suffix:nth-of-type(2) > div.label-wrapper > div.progress-wrapper > div.inpt-progress-state__container.okr-block-progress.editable > div.inpt-progress-input__container.state-progress-input > div.inpt-progress-input__progress-input.inpt-progress-input__normal.inpt-progress-input__editable > div.inpt-progress-input__progress.inpt-progress-input__has-control-bar:nth-of-type(1) > input.input
+
+  [19] input
+       ID: rc_select_5
+       Type: search
+       XPath: //*[@id="rc_select_5"]
+       CSS: #rc_select_5
+
+  [20] input
+       Type: text
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.inpt-layout-container-fluid__container.index-page-fluid-wrapper:nth-of-type(2) > div.inpt-layout-container__container.index-page-fluid-wrapper-inner > div.index-content-wrapper.summary-is-show.weekly-auto-width > div.inpt-split-screen__container > div.split-panel-wrapper.ui-type-line.show.react-resizable:nth-of-type(2) > div.weekly-summary-panel-container > div.summary-panel-wrapper:nth-of-type(2) > div.panel-hide.summary-panel-main:nth-of-type(2) > div.person-summary-panel__wrapper > div.person-summary-panel__header:nth-of-type(1) > div.person-summary-panel__search > div.erp-select.erp-select-suggest.inpt-person-suggest__person-suggest.person-summary-panel__suggest.inpt-suggest__container.erp-select-status-untouched.erp-select-mode-single.erp-select-shape-normal.erp-select-dropdown-mode-offset.erp-select-allow-clear.erp-select-has-prefix.erp-select-can-search > div.erp-select-selection:nth-of-type(1) > div.erp-select-control-single > div.erp-select-control-input-wrap > input.erp-select-control-input
+
+
+文本域 (Textareas):
+  [1] textarea
+       Placeholder: 根据近7天的iCafe、知识库、重要会议生成工作总结参考（点击生成 | Esc退出）
+       Type: textarea
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/main[1]/section[1]/div[1]/div[1]/div[3]/div[1]/div[15]/div[1]/div[2]/div[1]/div[1]/textarea[1]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > main.mp-layout-main.baidu__editor__main > section.mp-layout-content-container.baidu__editor__content.okr-weekly-rte > div.baidu__editor__content__inner > div.baidu__editor__content__right > div.mp-editor-container-outer.mp-editor-container-outer-no-title.mp-editor-elastic-padding:nth-of-type(3) > div.mp-editor-provider-container:nth-of-type(1) > div.mp-ai-container:nth-of-type(15) > div.ai_chat_plugin_container > div.ai_chat_plugin_main:nth-of-type(2) > div.ai_chat_ask_wrap > div.ai_chat_editor_container > textarea.ai_chat_editor_textarea
+
+  [2] textarea
+       Placeholder: 请输入与当前系统所属业务相关的问题...
+       Type: textarea
+       XPath: //*[@id="dongting-framework"]/footer[1]/div[1]/div[1]/div[1]/div[2]/div[1]/textarea[1]
+       CSS: #dongting-framework > footer.style-mod__footer___rQ3hD.style-mod__visible___WgyNj > div.style-mod__chat-input-wrapper___DRdoR > div.style-mod__chat-input___qWUsU > div.chat-textarea-wrapper:nth-of-type(1) > div.ui-textarea.textarea-wrapper:nth-of-type(2) > div.ui-textarea-inner > textarea.ui-textarea-element:nth-of-type(1)
+
+  [3] textarea
+       Type: textarea
+       XPath: //*[@id="dongting-framework"]/footer[1]/div[1]/div[1]/div[1]/div[2]/div[1]/textarea[2]
+       CSS: #dongting-framework > footer.style-mod__footer___rQ3hD.style-mod__visible___WgyNj > div.style-mod__chat-input-wrapper___DRdoR > div.style-mod__chat-input___qWUsU > div.chat-textarea-wrapper:nth-of-type(1) > div.ui-textarea.textarea-wrapper:nth-of-type(2) > div.ui-textarea-inner > textarea.ui-textarea-element.ui-textarea-element-hidden:nth-of-type(2)
+
+  [4] textarea
+       Placeholder: 请描述您遇到的问题或建议，1-200字
+       Type: textarea
+       XPath: //*[@id="dongting-v1-container-wrapper"]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/textarea[1]
+       CSS: #dongting-v1-container-wrapper > div.xdongting-box-collection.xdongting-ishide:nth-of-type(2) > div.xdongting-box-collection > div.dongting-feedback:nth-of-type(2) > div.dongting-feedback-card > div.dongting-feedback-content:nth-of-type(2) > div.dongting-feedback-textarea-wrapper > textarea.dongting-feedback-textarea
+
+  [5] textarea
+       Type: textarea
+       XPath: /html/body/textarea[1]
+       CSS: html > body > textarea.slate-hidden-selection-dom
+
+
+按钮 (Buttons):
+  [1] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.inpt-layout-container__container.weekly-layout-header-wrapper.weekly-layout-hidden:nth-of-type(1) > div.inpt-header__container > div.weekly-header-extra:nth-of-type(2) > div.inpt-select__main.inpt-select__without-value.inpt-select__container.ui-type-border.inpt-drop-down__container.inpt-drop-down-button__container.setting-extra-component.css-gtt813:nth-of-type(2) > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.inpt-drop-down-button__label.erp-btn.erp-btn-icon-shadow.erp-btn-size-default
+
+  [2] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[1]/div[1]/div[2]/div[3]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.inpt-layout-container__container.weekly-layout-header-wrapper.weekly-layout-hidden:nth-of-type(1) > div.inpt-header__container > div.weekly-header-extra:nth-of-type(2) > div.explain-popover-container:nth-of-type(3) > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.explain-btn.erp-btn.erp-btn-icon-shadow.erp-btn-size-default
+
+  [3] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-left:nth-of-type(1) > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.btn-return.erp-btn.erp-btn-icon-shadow.erp-btn-size-default
+
+  [4] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/span[1]/span[1]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-left:nth-of-type(1) > div.weekly-head > div.head-cell > div.weekly-head-with-status:nth-of-type(2) > div.inpt-weekly-head__container.in-header:nth-of-type(1) > div.inpt-weekly-head__head-line > div.inpt-weekly-head__date-picker-input-wrapper > div.inpt-wrp-date-picker__container.inpt-wrp-date-picker__use-weekly.inpt-wrp-date-picker__ui-undefined.erp-date-picker.inpt-wrp-date-picker__size-xs.erp-date-picker-has-value.erp-date-picker-allow-clear.erp-date-picker-status-undefined:nth-of-type(1) > div.date-picker-input-wrap > div.inpt-wrp-input__container:nth-of-type(1) > div.erp-input-wrap.erp-input-size-default.erp-input-status-untouched.erp-input-read-only.erp-input-has-prefix.erp-input-has-suffix > span.erp-input-prefix:nth-of-type(1) > span.inpt-wrp-date-picker__prefix > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.inpt-wrp-date-picker__prev-week-btn.inpt-wrp-date-picker__weekly-change-btn.erp-btn.erp-btn-text.erp-btn-size-xs
+
+  [5] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/span[2]/span[1]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-left:nth-of-type(1) > div.weekly-head > div.head-cell > div.weekly-head-with-status:nth-of-type(2) > div.inpt-weekly-head__container.in-header:nth-of-type(1) > div.inpt-weekly-head__head-line > div.inpt-weekly-head__date-picker-input-wrapper > div.inpt-wrp-date-picker__container.inpt-wrp-date-picker__use-weekly.inpt-wrp-date-picker__ui-undefined.erp-date-picker.inpt-wrp-date-picker__size-xs.erp-date-picker-has-value.erp-date-picker-allow-clear.erp-date-picker-status-undefined:nth-of-type(1) > div.date-picker-input-wrap > div.inpt-wrp-input__container:nth-of-type(1) > div.erp-input-wrap.erp-input-size-default.erp-input-status-untouched.erp-input-read-only.erp-input-has-prefix.erp-input-has-suffix > span.erp-input-suffix:nth-of-type(2) > span.inpt-wrp-date-picker__suffix > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.inpt-wrp-date-picker__next-week-btn.inpt-wrp-date-picker__weekly-change-btn.erp-btn.erp-btn-text.erp-btn-size-xs
+
+  [6] button
+       Type: button
+       Text: 提醒我写周报
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.header-btn-bar:nth-of-type(1) > button.inpt-wrp-button__container.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.erp-btn.erp-btn-text.erp-btn-size-default:nth-of-type(1)
+
+  [7] button
+       Type: button
+       Text: 当前周权限
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[2]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.header-btn-bar:nth-of-type(1) > button.inpt-wrp-button__container.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.erp-btn.erp-btn-text.erp-btn-size-default:nth-of-type(2)
+
+  [8] button
+       Type: button
+       Text: 周报参考
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/button[3]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.header-btn-bar:nth-of-type(1) > button.inpt-wrp-button__container.inpt-wrp-button__active.active-status.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.other-button.summary-button.erp-btn.erp-btn-text.erp-btn-size-default:nth-of-type(3)
+
+  [9] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.inpt-header__container:nth-of-type(2) > div.weekly-header-extra:nth-of-type(1) > div.inpt-select__main.inpt-select__without-value.inpt-select__container.ui-type-border.inpt-drop-down__container.inpt-drop-down-button__container.setting-extra-component.css-gtt813:nth-of-type(1) > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.inpt-drop-down-button__label.erp-btn.erp-btn-icon-shadow.erp-btn-size-default
+
+  [10] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.inpt-header__container:nth-of-type(2) > div.weekly-header-extra:nth-of-type(1) > div.inpt-select__main.inpt-select__without-value.inpt-select__container.ui-type-border.inpt-drop-down__container.inpt-drop-down-button__container.setting-extra-component.glb_margin-left_8.css-gtt813:nth-of-type(2) > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.inpt-drop-down-button__label.erp-btn.erp-btn-icon-shadow.erp-btn-size-default
+
+  [11] button
+       Type: button
+       Text: 更新
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[3]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.inpt-header__container:nth-of-type(2) > div.weekly-header-extra:nth-of-type(1) > div.operate-button-wrap:nth-of-type(3) > button.inpt-wrp-button__container.inpt-wrp-button__shape-default.inpt-wrp-button__color-primary.erp-btn.erp-btn-important.erp-btn-size-md:nth-of-type(1)
+
+  [12] button
+       Type: button
+       Text: 退出
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[3]/button[2]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.inpt-header__container:nth-of-type(2) > div.weekly-header-extra:nth-of-type(1) > div.operate-button-wrap:nth-of-type(3) > button.inpt-wrp-button__container.inpt-wrp-button__shape-default.inpt-wrp-button__color-primary.erp-btn.erp-btn-intensive.erp-btn-size-md:nth-of-type(2)
+
+  [13] button
+       Type: button
+       XPath: //*[@id="root"]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[4]/button[1]
+       CSS: #root > div.app-view.app-view-advanced-weekly-module-wrapper > div.weekly-layout-vm.weekly-location-home > div.loading-hoc-wrapper.loading-hide.weekly-layout-loading-wrapper:nth-of-type(2) > div.inpt-layout-container__container.weekly-layout-body-wrapper:nth-of-type(1) > div.index-page-wrapper > div.person-rte-weekly-layout__container.my-weekly-header.doc-header:nth-of-type(1) > div.person-rte-weekly-layout__header > div.person-rte-weekly-layout__header-right:nth-of-type(2) > div.person-rte-weekly-layout__header-buttons > div.inpt-header__container:nth-of-type(2) > div.weekly-header-extra:nth-of-type(1) > div.explain-popover-container:nth-of-type(4) > button.inpt-wrp-button__container.inpt-wrp-button__no-children.inpt-wrp-button__shape-default.inpt-wrp-button__color-normal.explain-btn.erp-btn.erp-btn-icon-shadow.erp-btn-size-default
+
+  [14] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[1]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn.mp-btn-disabled:nth-of-type(1)
+
+  [15] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[2]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn.mp-btn-disabled:nth-of-type(2)
+
+  [16] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[3]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn:nth-of-type(3)
+
+  [17] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[4]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn:nth-of-type(4)
+
+  [18] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[5]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn:nth-of-type(5)
+
+  [19] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[6]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn:nth-of-type(6)
+
+  [20] button
+       Type: submit
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/header[1]/div[1]/div[1]/button[7]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > header.mp-layout-header.baidu__editor__header.introjs-fixParent > div.mp-toolbar.mp-toolbar-sticky.mp-toolbar-fold.mp-toolbar-showmore:nth-of-type(1) > div.mp-toolbar-inner > button.mp-btn:nth-of-type(7)
+
+
+标签 (Labels):
+  [1] label
+       Text: 默认生成智能周报
+       XPath: //*[@id="baidu_realtime_editor_f"]/section[1]/main[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[2]/label[1]
+       CSS: #baidu_realtime_editor_f > section.mp-layout.baidu__editor__layout > main.mp-layout-main.baidu__editor__main > section.mp-layout-content-container.baidu__editor__content.okr-weekly-rte > div.baidu__editor__content__inner > div.baidu__editor__content__right > div.baidu__editor__title__noslide:nth-of-type(1) > div.head-cell > div.sub-weekly-head:nth-of-type(2) > label.erp-checkbox-standard.checkbox-wrapper.checkbox-size-middle.default-checkbox-wrapper.erp-checkbox-wrap.erp-generic-checkbox-wrap.erp-checkbox-checked
+
+  [2] label
+       Text: 上传附件
+       XPath: //*[@id="dongting-v1-container-wrapper"]/div[2]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/label[1]
+       CSS: #dongting-v1-container-wrapper > div.xdongting-box-collection.xdongting-ishide:nth-of-type(2) > div.xdongting-box-collection > div.dongting-feedback:nth-of-type(2) > div.dongting-feedback-card > div.dongting-feedback-upload:nth-of-type(3) > div.dongting-feedback-upload-options > div.dongting-feedback-upload-buttons > label.dongting-feedback-upload-btn

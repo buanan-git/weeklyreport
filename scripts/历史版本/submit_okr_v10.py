@@ -1,0 +1,1037 @@
+#!/usr/bin/env python3
+"""百度OKR周报自动提交脚本 - V2.3 (支持Content关键字段解析)"""
+
+import asyncio
+import socket
+import json
+import os
+from datetime import datetime, timedelta
+from pathlib import Path
+from playwright.async_api import async_playwright, Error as PlaywrightError
+
+# ==================== 配置区域 ====================
+
+MY_ID = "s673090"
+EDIT_BASE_URL = "https://okr.baidu-int.com/pages/weekly.html#/home"
+
+def get_default_date():
+    today = datetime.now()
+    last_monday = today - timedelta(days=today.weekday() + 7)
+    return f"s{last_monday.strftime('%Y-%m-%d')}"
+
+DRY_RUN = False
+AUTO_SUBMIT = True
+JSON_FILE_PATH = "team_weekly_report_v10.json"
+
+WEEKLY_DATA = {
+    "part1_work_summary": None,
+    "part2_okr_structure": None,
+    "part3_metrics": None
+}
+
+# ==================== 格式化配置 ====================
+
+FORMAT_CONFIG = {
+    "part1_work_summary": {
+        "template": "{project_name}: {work_desc} (进度: {progress}, 状态: {status})",
+        "fallback": "{item}",
+        "separator": "\n"
+    },
+    "part2_okr_structure": {
+        "weekly_work_template": "已完成: {completed}\n进行中: {in_progress}\n阻塞: {blocked}",
+        "fallback": "{weekly_work}",
+        "include_progress": True,
+        "include_confidence": True
+    },
+    "part3_metrics": {
+        "sections": {
+            "业务核心指标": "{metric_name}: 当前{current_value} (目标{target_value}, 变化{change})",
+            "主要项目": "{project_name}: 进度{progress} ({status})",
+            "下周重点工作": "[{priority}] {work_item} (负责人: {owner}, 截止: {deadline})"
+        },
+        "default": "{item}",
+        "separator": "\n"
+    }
+}
+
+# ==================== 解析函数 ====================
+
+def format_item(item, template, fallback="{item}"):
+    if isinstance(item, dict):
+        try:
+            return template.format(**item)
+        except KeyError as e:
+            print(f"      [WARN] 缺少字段: {e}")
+            return ", ".join([f"{k}={v}" for k, v in item.items()])
+    elif isinstance(item, str):
+        return fallback.format(item=item)
+    return str(item)
+
+def parse_part1(data):
+    print(f"\n  [解析] 第一部分: 本周工作总结")
+    if not isinstance(data, dict):
+        print(f"    [WARN] 不是字典: {type(data)}")
+        return None
+
+    title = data.get("title", "本周工作总结")
+    content_list = data.get("content", [])
+
+    print(f"    标题: {title}")
+    print(f"    content类型: {type(content_list)}")
+
+    if not isinstance(content_list, list):
+        content_list = [content_list] if content_list else []
+
+    config = FORMAT_CONFIG["part1_work_summary"]
+    formatted_items = []
+    raw_items = []
+
+    for idx, item in enumerate(content_list):
+        print(f"    处理 item {idx+1}: {type(item)}")
+        if isinstance(item, dict):
+            raw_items.append(item)
+            text = format_item(item, config["template"], config["fallback"])
+            formatted_items.append(f"{idx+1}. {text}")
+            print(f"      字段: {list(item.keys())}")
+        elif isinstance(item, str):
+            raw_items.append({"text": item})
+            formatted_items.append(f"{idx+1}. {item}")
+
+    result = {
+        "title": title,
+        "content": config["separator"].join(formatted_items),
+        "raw_content": raw_items,
+        "item_count": len(formatted_items)
+    }
+
+    print(f"    [OK] 完成: {result['item_count']} 条")
+    print(f"    预览: {result['content'][:150]}...")
+    return result
+
+def parse_part2(data):
+    print(f"\n  [解析] 第二部分: OKR进度")
+    if not isinstance(data, dict):
+        print(f"    [WARN] 不是字典: {type(data)}")
+        return None
+
+    title = data.get("title", "OKR进度")
+    objectives = data.get("objectives", [])
+
+    print(f"    标题: {title}")
+    print(f"    Objectives: {len(objectives)}")
+
+    if not isinstance(objectives, list):
+        return None
+
+    config = FORMAT_CONFIG["part2_okr_structure"]
+    okr_data = {"title": title, "objectives": []}
+
+    for obj_idx, obj in enumerate(objectives):
+        if not isinstance(obj, dict):
+            continue
+
+        o_id = obj.get("o_id", f"O{obj_idx+1}")
+        o_title = obj.get("o_title", "")
+        print(f"    Objective: {o_id} - {o_title}")
+
+        o_data = {"o_id": o_id, "o_title": o_title, "key_results": []}
+        key_results = obj.get("key_results", [])
+
+        for kr_idx, kr in enumerate(key_results):
+            if not isinstance(kr, dict):
+                continue
+
+            kr_id = kr.get("kr_id", f"KR{kr_idx+1}")
+            kr_title = kr.get("kr_title", "")
+            weekly_work = kr.get("weekly_work", "")
+            progress = kr.get("progress", "")
+            confidence = kr.get("confidence", "")
+
+            print(f"      KR: {kr_id}")
+
+            if isinstance(weekly_work, dict):
+                print(f"        weekly_work字段: {list(weekly_work.keys())}")
+                formatted_work = format_item(weekly_work, config["weekly_work_template"], config["fallback"])
+            elif isinstance(weekly_work, str):
+                formatted_work = weekly_work
+            else:
+                formatted_work = str(weekly_work)
+
+            if config["include_progress"] and progress:
+                formatted_work += f"\n进度: {progress}"
+            if config["include_confidence"] and confidence:
+                formatted_work += f" | 信心: {confidence}"
+
+            o_data["key_results"].append({
+                "kr_id": kr_id,
+                "kr_title": kr_title,
+                "weekly_work": formatted_work,
+                "raw_weekly_work": weekly_work,
+                "progress": progress,
+                "confidence": confidence
+            })
+
+        okr_data["objectives"].append(o_data)
+
+    total_krs = sum(len(o["key_results"]) for o in okr_data["objectives"])
+    print(f"    [OK] 完成: {len(okr_data['objectives'])} 个O, {total_krs} 个KR")
+    return okr_data
+
+def parse_part3(data):
+    print(f"\n  [解析] 第三部分: 关键指标")
+    if not isinstance(data, dict):
+        print(f"    [WARN] 不是字典: {type(data)}")
+        return None
+
+    title = data.get("title", "关键指标")
+    sections = data.get("sections", [])
+
+    print(f"    标题: {title}")
+    print(f"    Sections: {len(sections)}")
+
+    if not isinstance(sections, list):
+        return None
+
+    config = FORMAT_CONFIG["part3_metrics"]
+    metrics_data = {"title": title, "sections": {}}
+
+    for section in sections:
+        if not isinstance(section, dict):
+            continue
+
+        section_title = section.get("section_title", "")
+        content_list = section.get("content", [])
+
+        print(f"    Section: {section_title}")
+
+        if not isinstance(content_list, list):
+            content_list = [content_list] if content_list else []
+
+        template = config["sections"].get(section_title, config["default"])
+        formatted_items = []
+        raw_items = []
+
+        for idx, item in enumerate(content_list):
+            if isinstance(item, dict):
+                raw_items.append(item)
+                text = format_item(item, template, config["default"])
+                formatted_items.append(f"{idx+1}. {text}")
+                print(f"      字段: {list(item.keys())}")
+            elif isinstance(item, str):
+                raw_items.append({"text": item})
+                formatted_items.append(f"{idx+1}. {item}")
+
+        metrics_data["sections"][section_title] = {
+            "raw_content": raw_items,
+            "formatted_content": config["separator"].join(formatted_items),
+            "item_count": len(formatted_items)
+        }
+
+        print(f"      [OK] {len(formatted_items)} 条")
+
+    print(f"    [OK] 完成: {len(metrics_data['sections'])} 个section")
+    return metrics_data
+
+def parse_json_file(json_path):
+    print(f"\n{'='*60}")
+    print("[DEBUG] 开始解析JSON文件")
+    print(f"{'='*60}")
+
+    print(f"\n[DEBUG] 检查文件: {json_path}")
+    if not os.path.exists(json_path):
+        print("  [ERROR] 文件不存在")
+        try:
+            files = os.listdir(os.path.dirname(json_path) or ".")
+            print(f"  目录文件: {files}")
+        except:
+            pass
+        return None
+
+    try:
+        with open(json_path, "r", encoding="utf-8") as f:
+            raw_content = f.read()
+        print(f"  [OK] 读取: {len(raw_content)} 字符")
+        print(f"  前300字符: {raw_content[:300]}")
+    except Exception as e:
+        print(f"  [ERROR] 读取失败: {e}")
+        return None
+
+    try:
+        data = json.loads(raw_content)
+        print(f"\n[DEBUG] JSON解析成功")
+        print(f"  顶层键: {list(data.keys())}")
+    except Exception as e:
+        print(f"  [ERROR] JSON解析失败: {e}")
+        return None
+
+    print(f"\n{'='*60}")
+    print("开始解析各部分内容")
+    print(f"{'='*60}")
+
+    result = {
+        "part1_work_summary": None,
+        "part2_okr_structure": None,
+        "part3_metrics": None
+    }
+
+    if "part1_work_summary" in data:
+        result["part1_work_summary"] = parse_part1(data["part1_work_summary"])
+    else:
+        print(f"\n  [WARN] 未找到 part1_work_summary")
+
+    if "part2_okr_structure" in data:
+        result["part2_okr_structure"] = parse_part2(data["part2_okr_structure"])
+    else:
+        print(f"\n  [WARN] 未找到 part2_okr_structure")
+
+    if "part3_metrics" in data:
+        result["part3_metrics"] = parse_part3(data["part3_metrics"])
+    else:
+        print(f"\n  [WARN] 未找到 part3_metrics")
+
+    print(f"\n{'='*60}")
+    print("[DEBUG] 解析结果总结")
+    print(f"{'='*60}")
+    print(f"  第一部分: {'OK' if result['part1_work_summary'] else 'FAIL'}")
+    print(f"  第二部分: {'OK' if result['part2_okr_structure'] else 'FAIL'}")
+    print(f"  第三部分: {'OK' if result['part3_metrics'] else 'FAIL'}")
+
+    return result
+
+def load_content_from_json():
+    global WEEKLY_DATA
+
+    print(f"\n{'='*60}")
+    print("[系统] 加载JSON文件")
+    print(f"{'='*60}")
+
+    try:
+        script_dir = Path(__file__).parent.absolute()
+    except:
+        script_dir = Path(os.getcwd())
+
+    json_path = script_dir / JSON_FILE_PATH
+    print(f"文件路径: {json_path}")
+
+    parsed = parse_json_file(str(json_path))
+
+    if parsed:
+        WEEKLY_DATA["part1_work_summary"] = parsed.get("part1_work_summary")
+        WEEKLY_DATA["part2_okr_structure"] = parsed.get("part2_okr_structure")
+        WEEKLY_DATA["part3_metrics"] = parsed.get("part3_metrics")
+
+        print(f"\n[OK] 数据加载成功")
+        print(f"\n[验证] 数据预览:")
+        if WEEKLY_DATA["part1_work_summary"]:
+            print(f"  第一部分: {len(WEEKLY_DATA['part1_work_summary']['content'])} 字符")
+        if WEEKLY_DATA["part2_okr_structure"]:
+            print(f"  第二部分: {len(WEEKLY_DATA['part2_okr_structure']['objectives'])} 个O")
+        if WEEKLY_DATA["part3_metrics"]:
+            print(f"  第三部分: {len(WEEKLY_DATA['part3_metrics']['sections'])} 个section")
+
+        return True
+    else:
+        print(f"\n[ERROR] 加载失败")
+        return False
+
+def check_network_connection():
+    print("\n[网络检测] 检查网络连接...")
+    try:
+        ip = socket.gethostbyname("okr.baidu-int.com")
+        print(f"  [OK] 内网解析正常: {ip}")
+        return True
+    except:
+        print(f"  [X] 内网解析失败，请检查VPN")
+        return False
+
+# ==================== 页面操作 ====================
+
+async def analyze_page_structure(page):
+    print("\n[页面分析] 分析页面结构...")
+    structure = await page.evaluate("""() => {
+        const result = {has_part1: false, has_part2: false, has_part3: false};
+        document.querySelectorAll('h1, h2, h3, h4, [class*="title"]').forEach(h => {
+            const t = h.textContent || '';
+            if (t.includes('本周工作总结') || t.includes('工作总结')) result.has_part1 = true;
+            if (t.includes('OKR') || t.includes('okr')) result.has_part2 = true;
+            if (t.includes('指标') || t.includes('项目')) result.has_part3 = true;
+        });
+        return result;
+    }""")
+    print(f"  第一部分: {'存在' if structure['has_part1'] else '不存在'}")
+    print(f"  第二部分: {'存在' if structure['has_part2'] else '不存在'}")
+    print(f"  第三部分: {'存在' if structure['has_part3'] else '不存在'}")
+    return structure
+
+async def find_scroll_container(page):
+    containers = await page.evaluate("""() => {
+        const result = [];
+        document.querySelectorAll("*").forEach(el => {
+            const s = window.getComputedStyle(el);
+            if (el.scrollHeight > el.clientHeight + 100 && el.scrollHeight > 500 &&
+                (s.overflowY === 'auto' || s.overflowY === 'scroll')) {
+                const r = el.getBoundingClientRect();
+                result.push({class: el.className, id: el.id, tag: el.tagName, x: r.left + r.width/2, y: r.top + r.height/2});
+            }
+        });
+        result.sort((a, b) => b.scrollHeight - a.scrollHeight);
+        return result.slice(0, 1);
+    }""")
+    if containers:
+        first = containers[0]
+        selector = f"[class*='{first['class'].split()[0]}']" if first.get("class") else f"#{first['id']}" if first.get("id") else first["tag"].lower()
+        return selector, (first.get("x", 960), first.get("y", 600))
+    return "body", (960, 600)
+
+async def scroll_container(page, selector, center):
+    print("    滚动加载...", end=" ", flush=True)
+    await page.mouse.move(center[0], center[1])
+    for i in range(30):
+        await page.mouse.wheel(0, 400)
+        await asyncio.sleep(0.3)
+        if i % 10 == 0:
+            print(f"{i*400}px", end=" ", flush=True)
+    print("OK")
+    print("    等待渲染...", end=" ", flush=True)
+    await asyncio.sleep(5)
+    print("OK")
+
+async def smart_fill_input(page, label_text, content, create_if_missing=False, section_type=None):
+    if not content or not content.strip():
+        print(f"  [跳过] 内容为空: {label_text}")
+        return False
+
+    content = content.strip()
+    print(f"\n  处理: {label_text[:40]}...")
+    print(f"    内容长度: {len(content)}")
+    print(f"    预览: {content[:80]}...")
+
+    variants = [label_text]
+    if "本周工作总结" in label_text:
+        variants.extend(["工作总结", "本周工作"])
+    elif "OKR" in label_text:
+        variants.extend(["OKR进度", "OKR"])
+
+    for variant in variants:
+        try:
+            locator = page.get_by_text(variant, exact=False).first
+            if await locator.is_visible(timeout=2000):
+                print(f"    [OK] 找到标签: {variant}")
+                if await find_and_fill_nearby_input(page, locator, content):
+                    return True
+        except:
+            continue
+
+    print("    尝试JavaScript...")
+    if await fill_by_javascript(page, label_text, content):
+        return True
+
+    if create_if_missing and section_type:
+        print("    尝试创建新区域...")
+        if await create_new_section(page, section_type, label_text, content):
+            return True
+
+    print(f"    [X] 失败: {label_text}")
+    return False
+
+async def find_and_fill_nearby_input(page, label_locator, content):
+    try:
+        await label_locator.click()
+        await asyncio.sleep(0.5)
+        handle = await label_locator.element_handle()
+        if not handle:
+            return False
+        text = await handle.inner_text()
+        selectors = ['textarea', 'input[type="text"]', '[contenteditable="true"]', '.ant-input']
+        for sel in selectors:
+            try:
+                inp = page.locator(f'xpath=//*[contains(text(), "{text}")]/following::{sel}[1] | xpath=//*[contains(text(), "{text}")]/ancestor::div[1]//{sel}').first
+                if await inp.is_visible(timeout=2000):
+                    print(f"    [OK] 找到输入框: {sel}")
+                    await inp.fill(content)
+                    await asyncio.sleep(0.5)
+                    return True
+            except:
+                continue
+    except Exception as e:
+        print(f"    [!] 失败: {e}")
+    return False
+
+async def fill_by_javascript(page, label_text, content):
+    try:
+        result = await page.evaluate(f"""(labelText, content) => {{
+            const findEl = (text) => {{
+                const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+                let n; while (n = w.nextNode()) if (n.textContent.trim().includes(text)) return n.parentElement;
+                return null;
+            }};
+            const findInput = (el) => {{
+                if (el.matches('textarea, input[type="text"], [contenteditable="true"]')) return el;
+                let inputs = el.querySelectorAll('textarea, input[type="text"], [contenteditable="true"]');
+                if (inputs.length) return inputs[0];
+                let p = el.parentElement;
+                for (let i=0; i<5 && p; i++) {{
+                    inputs = p.querySelectorAll('textarea, input[type="text"], [contenteditable="true"]');
+                    if (inputs.length) return inputs[0];
+                    p = p.parentElement;
+                }}
+                return null;
+            }};
+            const label = findEl(labelText);
+            if (!label) return 'no_label';
+            const input = findInput(label);
+            if (!input) return 'no_input';
+            input.scrollIntoView({{behavior:'smooth', block:'center'}});
+            input.focus();
+            if (input.tagName === 'TEXTAREA' || input.tagName === 'INPUT') input.value = content;
+            else input.innerHTML = content.replace(/\n/g, '<br>');
+            ['focus','input','change','blur'].forEach(t => input.dispatchEvent(new Event(t, {{bubbles:true}})));
+            return 'ok';
+        }}""", label_text, content)
+
+        if result == 'ok':
+            print(f"    [OK] JavaScript填写成功")
+            await asyncio.sleep(0.5)
+            return True
+        else:
+            print(f"    [!] JavaScript: {result}")
+    except Exception as e:
+        print(f"    [!] JavaScript错误: {e}")
+    return False
+
+async def create_new_section(page, section_type, title, content):
+    try:
+        result = await page.evaluate(f"""(title, content) => {{
+            const c = document.querySelector('.ant-form, .weekly-form, main') || document.body;
+            const div = document.createElement('div');
+            div.style.cssText = 'margin-top:20px;padding:16px;border:1px solid #d9d9d9;border-radius:4px;';
+            const h3 = document.createElement('h3');
+            h3.textContent = title;
+            h3.style.marginBottom = '12px';
+            const ta = document.createElement('textarea');
+            ta.value = content;
+            ta.style.cssText = 'width:100%;minHeight:120px;padding:8px;';
+            div.appendChild(h3);
+            div.appendChild(ta);
+            c.appendChild(div);
+            ta.focus();
+            ta.dispatchEvent(new Event('input', {{bubbles:true}}));
+            return 'created';
+        }}""", title, content)
+
+        if result == 'created':
+            print(f"    [OK] 创建成功")
+            return True
+    except Exception as e:
+        print(f"    [X] 创建失败: {e}")
+    return False
+
+# ==================== OKR填写 ====================
+
+async def fill_okr_section(page, okr_data):
+    print(f"\n[OKR填写] 开始填写OKR进度...")
+    print(f"  验证: objectives = {len(okr_data.get('objectives', []))}")
+
+    objectives = okr_data.get("objectives", [])
+    success_count = 0
+    fail_count = 0
+
+    for obj in objectives:
+        o_id = obj.get("o_id", "")
+        o_title = obj.get("o_title", "")
+        print(f"\n  目标: {o_id} - {o_title}")
+
+        for kr in obj.get("key_results", []):
+            kr_id = kr.get("kr_id", "")
+            kr_title = kr.get("kr_title", "")
+            weekly_work = kr.get("weekly_work", "")
+
+            print(f"    KR: {kr_id} - {kr_title}")
+            print(f"    内容: {weekly_work[:60]}...")
+
+            label_variants = [f"{o_id}{kr_id}", f"{o_id} {kr_id}", kr_id, kr_title]
+
+            filled = False
+            for variant in label_variants:
+                try:
+                    kr_locator = page.get_by_text(variant, exact=False).first
+                    if await kr_locator.is_visible(timeout=2000):
+                        print(f"      找到标签: {variant}")
+                        kr_handle = await kr_locator.element_handle()
+                        if kr_handle and await fill_weekly_work_in_kr_context(page, kr_handle, weekly_work):
+                            success_count += 1
+                            filled = True
+                            break
+                except:
+                    continue
+
+            if not filled:
+                if await fill_by_javascript(page, f"{o_id}{kr_id} 本周工作", weekly_work):
+                    success_count += 1
+                else:
+                    fail_count += 1
+                    print(f"      [X] 填写失败")
+
+            await asyncio.sleep(0.5)
+
+    print(f"\n  统计: 成功{success_count}条, 失败{fail_count}条")
+    return fail_count == 0
+
+async def fill_weekly_work_in_kr_context(page, kr_element, content):
+    try:
+        result = await page.evaluate("""(krElement, content) => {
+            const findInput = (context) => {
+                const allElements = Array.from(context.querySelectorAll('*'));
+                let label = allElements.find(el => el.textContent && el.textContent.includes('本周工作'));
+                if (label) {
+                    let parent = label.parentElement;
+                    for (let i = 0; i < 3 && parent; i++) {
+                        const inputs = parent.querySelectorAll('textarea, input[type="text"], [contenteditable="true"]');
+                        if (inputs.length > 0) return inputs[0];
+                        parent = parent.parentElement;
+                    }
+                }
+                const inputs = context.querySelectorAll('textarea, input[type="text"], [contenteditable="true"]');
+                for (let input of inputs) {
+                    const rect = input.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) return input;
+                }
+                return null;
+            };
+
+            let input = findInput(krElement);
+            if (!input) {
+                const oParent = krElement.closest('[class*="objective"], [class*="O"], section');
+                if (oParent) input = findInput(oParent);
+            }
+
+            if (!input) return false;
+
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            input.focus();
+            if (input.tagName === 'TEXTAREA' || input.tagName === 'INPUT') {
+                input.value = content;
+            } else {
+                input.innerHTML = content.replace(/\n/g, '<br>');
+            }
+            ['focus', 'input', 'change', 'blur'].forEach(eventType => {
+                input.dispatchEvent(new Event(eventType, { bubbles: true }));
+            });
+            return true;
+        }""", kr_element, content)
+
+        if result:
+            print(f"      [OK] 填写成功")
+            await asyncio.sleep(0.5)
+            return True
+    except Exception as e:
+        print(f"      [!] 填写失败: {e}")
+    return False
+
+# ==================== 其他部分填写 ====================
+
+async def fill_part1_work_summary(page, part1_data):
+    print("\n[1/3] 填写本周工作总结...")
+    if not part1_data:
+        print("  [!] 无数据")
+        return False
+
+    title = part1_data.get("title", "本周工作总结")
+    content = part1_data.get("content", "")
+
+    print(f"  标题: {title}")
+    print(f"  内容长度: {len(content)} 字符")
+
+    result = await smart_fill_input(page, title, content, create_if_missing=True, section_type="part1")
+
+    if not result:
+        for alt in ["工作总结", "本周工作", "工作汇总"]:
+            if await smart_fill_input(page, alt, content):
+                result = True
+                break
+
+    return result
+
+async def fill_part3_metrics(page, part3_data):
+    print("\n[3/3] 填写关键指标...")
+    if not part3_data:
+        print("  [!] 无数据")
+        return False
+
+    title = part3_data.get("title", "关键指标")
+    sections = part3_data.get("sections", {})
+
+    print(f"  标题: {title}")
+    print(f"  Sections: {len(sections)}")
+
+    all_success = True
+
+    for section_title, section_data in sections.items():
+        content = section_data.get("formatted_content", "")
+        print(f"\n  处理: {section_title}")
+        print(f"    内容长度: {len(content)} 字符")
+
+        result = await smart_fill_input(page, section_title, content, create_if_missing=True, section_type="part3")
+
+        if not result:
+            variants = []
+            if "业务核心指标" in section_title:
+                variants = ["核心指标", "业务指标", "指标"]
+            elif "主要项目" in section_title:
+                variants = ["项目", "项目进度"]
+            elif "下周重点工作" in section_title:
+                variants = ["下周工作", "下周计划", "计划"]
+
+            for variant in variants:
+                if await smart_fill_input(page, variant, content):
+                    result = True
+                    break
+
+        if not result:
+            all_success = False
+            print(f"    [X] 失败")
+
+        await asyncio.sleep(0.3)
+
+    return all_success
+
+# ==================== 提交和确认 ====================
+
+async def auto_submit_and_confirm(page):
+    print("\n[提交] 自动提交...")
+
+    submit_clicked = False
+    for text in ["保存", "提交", "更新", "Save", "Submit"]:
+        try:
+            button = page.get_by_role("button", name=text).first
+            if await button.is_visible(timeout=2000):
+                print(f"  点击: {text}")
+                await button.click()
+                submit_clicked = True
+                break
+        except:
+            continue
+
+    if not submit_clicked:
+        result = await page.evaluate("""() => {
+            const buttons = Array.from(document.querySelectorAll('button, input[type="submit"]'));
+            for (let btn of buttons) {
+                const text = (btn.textContent || btn.value || '').trim();
+                if ((text.includes('保存') || text.includes('提交')) && btn.offsetParent !== null) {
+                    btn.click();
+                    return true;
+                }
+            }
+            return false;
+        }""")
+        if result:
+            submit_clicked = True
+            print("  JavaScript点击提交")
+
+    if not submit_clicked:
+        print("  [X] 未找到提交按钮")
+        return False
+
+    print("\n[确认] 处理确认弹框...")
+    await asyncio.sleep(1.5)
+
+    confirm_clicked = False
+    for text in ["确认", "确定", "Yes", "OK", "Confirm"]:
+        try:
+            confirm_btn = page.get_by_role("dialog").get_by_role("button", name=text).first
+            if await confirm_btn.is_visible(timeout=3000):
+                print(f"  点击确认: {text}")
+                await confirm_btn.click()
+                confirm_clicked = True
+                break
+        except:
+            try:
+                confirm_btn = page.get_by_role("button", name=text).first
+                if await confirm_btn.is_visible(timeout=2000):
+                    await confirm_btn.click()
+                    confirm_clicked = True
+                    break
+            except:
+                continue
+
+    if not confirm_clicked:
+        result = await page.evaluate("""() => {
+            const dialogs = document.querySelectorAll('[role="dialog"], .modal, .ant-modal');
+            for (let dialog of dialogs) {
+                if (dialog.style.display === 'none') continue;
+                const buttons = dialog.querySelectorAll('button');
+                for (let btn of buttons) {
+                    const text = (btn.textContent || '').trim();
+                    if ((text.includes('确认') || text.includes('确定')) && btn.offsetParent !== null) {
+                        btn.click();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }""")
+        if result:
+            confirm_clicked = True
+            print("  JavaScript点击确认")
+
+    if confirm_clicked:
+        print("  [OK] 提交完成")
+        await asyncio.sleep(2)
+        return True
+    return False
+
+# ==================== 主流程 ====================
+
+async def submit_single_weekly_v23(page, target_date=None, dry_run=True, auto_submit=False, is_first_page=False):
+    target_date = target_date or get_default_date()
+    edit_url = f"{EDIT_BASE_URL}?date={target_date}&mandatorId={MY_ID}&isEdit=true"
+
+    print("="*60)
+    print(f"目标日期: {target_date}")
+    print(f"编辑模式: {'预览' if dry_run else '实际填写'}")
+    print(f"自动提交: {'是' if auto_submit else '否'}")
+    print("="*60)
+
+    try:
+        try:
+            await page.goto(edit_url, wait_until='domcontentloaded', timeout=60000)
+        except Exception as nav_error:
+            if 'uuap' in page.url:
+                return {'status': 'login_required', 'url': page.url}
+
+        if is_first_page:
+            print("\n(首次页面等待5秒)...", end=" ", flush=True)
+            await asyncio.sleep(5)
+            print("OK")
+        else:
+            await asyncio.sleep(2)
+
+        if 'uuap' in page.url:
+            return {'status': 'login_required', 'url': page.url}
+
+        print("[OK] 页面加载完成")
+
+    except Exception as e:
+        print(f"\n[X] 页面加载失败: {e}")
+        return {'status': 'error', 'error': str(e)}
+
+    await analyze_page_structure(page)
+
+    print("\n滚动加载页面内容...")
+    selector, center = await find_scroll_container(page)
+    await scroll_container(page, selector, center)
+
+    print("\n" + "="*60)
+    print("[验证] 数据状态检查")
+    print("="*60)
+    print(f"  part1_work_summary: {WEEKLY_DATA.get('part1_work_summary') is not None}")
+    print(f"  part2_okr_structure: {WEEKLY_DATA.get('part2_okr_structure') is not None}")
+    print(f"  part3_metrics: {WEEKLY_DATA.get('part3_metrics') is not None}")
+
+    if dry_run:
+        print("\n" + "="*60)
+        print("【预览模式】")
+        print("="*60)
+
+        if WEEKLY_DATA.get("part1_work_summary"):
+            print(f"\n1. 本周工作总结:")
+            print(f"{WEEKLY_DATA['part1_work_summary']['content'][:300]}...")
+
+        if WEEKLY_DATA.get("part2_okr_structure"):
+            print(f"\n2. OKR进度:")
+            for obj in WEEKLY_DATA["part2_okr_structure"]["objectives"]:
+                print(f"  {obj['o_id']}: {obj['o_title']}")
+                for kr in obj["key_results"]:
+                    print(f"    {kr['kr_id']}: {kr['weekly_work'][:50]}...")
+
+        if WEEKLY_DATA.get("part3_metrics"):
+            print(f"\n3. 关键指标:")
+            for section_name, section_data in WEEKLY_DATA["part3_metrics"]["sections"].items():
+                print(f"  {section_name}:")
+                print(f"    {section_data['formatted_content'][:100]}...")
+
+        return {'status': 'preview', 'date': target_date}
+
+    print("\n开始填写内容...")
+
+    results = {}
+
+    part1_data = WEEKLY_DATA.get("part1_work_summary")
+    part2_data = WEEKLY_DATA.get("part2_okr_structure")
+    part3_data = WEEKLY_DATA.get("part3_metrics")
+
+    print(f"\n[填写前数据检查]")
+    print(f"  part1_data: {part1_data is not None}")
+    print(f"  part2_data: {part2_data is not None}")
+    print(f"  part3_data: {part3_data is not None}")
+
+    if part1_data:
+        results['part1'] = await fill_part1_work_summary(page, part1_data)
+    else:
+        print("\n[!] 无第一部分数据，跳过")
+        results['part1'] = False
+
+    if part2_data:
+        results['part2'] = await fill_okr_section(page, part2_data)
+    else:
+        print("\n[!] 无第二部分数据，跳过")
+        results['part2'] = False
+
+    if part3_data:
+        results['part3'] = await fill_part3_metrics(page, part3_data)
+    else:
+        print("\n[!] 无第三部分数据，跳过")
+        results['part3'] = False
+
+    print("\n" + "="*60)
+    print("填写完成统计：")
+    print(f"  本周工作总结: {'OK' if results.get('part1') else 'FAIL'}")
+    print(f"  OKR本周工作: {'OK' if results.get('part2') else 'FAIL'}")
+    print(f"  关键指标: {'OK' if results.get('part3') else 'FAIL'}")
+    print("="*60)
+
+    if auto_submit and any(results.values()):
+        print("\n[自动提交] 准备自动提交...")
+        submit_result = await auto_submit_and_confirm(page)
+        results['submitted'] = submit_result
+
+        if submit_result:
+            print("[OK] 自动提交完成")
+        else:
+            print("[!] 自动提交可能失败")
+
+    return {'status': 'success', 'date': target_date, 'results': results}
+
+async def submit_weekly_with_retry_v23(page, **kwargs):
+    result = await submit_single_weekly_v23(page, is_first_page=True, **kwargs)
+
+    if result['status'] == 'error':
+        print(f"\n{'='*60}")
+        print("[重试机制] 首次失败，准备重试...")
+        print(f"{'='*60}")
+        await asyncio.sleep(2)
+
+        result = await submit_single_weekly_v23(page, is_first_page=False, **kwargs)
+
+        if result['status'] == 'success':
+            print("\n[OK] 重试成功")
+        else:
+            print("\n[X] 重试失败")
+
+    return result
+
+async def main():
+    print("\n" + "="*60)
+    print("程序启动 - 开始加载数据")
+    print("="*60)
+
+    json_loaded = load_content_from_json()
+
+    if not check_network_connection():
+        print("\n[!] 网络检查失败")
+        response = input("\n是否仍要继续? (y/N): ")
+        if response.lower() != 'y':
+            return
+
+    target_date = get_default_date()
+
+    print("="*60)
+    print("百度OKR周报自动提交 - V2.3 (支持Content关键字段解析)")
+    print("="*60)
+    print("\n【V2.3改进】")
+    print("  ✓ 支持content字段下的详细关键字段解析")
+    print("  ✓ 可配置的格式化模板")
+    print("  ✓ 智能识别字符串或字典类型的weekly_work")
+    print("  ✓ 详细的调试信息")
+    print(f"\n[配置]")
+    print(f"  用户ID: {MY_ID}")
+    print(f"  目标日期: {target_date}")
+    print(f"  编辑模式: {'预览' if DRY_RUN else '实际填写'}")
+    print(f"  自动提交: {'是' if AUTO_SUBMIT else '否'}")
+    print(f"\n[内容来源]")
+    if json_loaded:
+        print(f"  ✓ {JSON_FILE_PATH} 加载成功")
+        print(f"\n  [数据状态确认]")
+        print(f"    part1_work_summary: {WEEKLY_DATA.get('part1_work_summary') is not None}")
+        print(f"    part2_okr_structure: {WEEKLY_DATA.get('part2_okr_structure') is not None}")
+        print(f"    part3_metrics: {WEEKLY_DATA.get('part3_metrics') is not None}")
+
+        if WEEKLY_DATA.get("part1_work_summary"):
+            print(f"    - 工作总结: {len(WEEKLY_DATA['part1_work_summary']['content'])} 字符")
+        if WEEKLY_DATA.get("part2_okr_structure"):
+            kr_count = sum(len(o.get("key_results", [])) for o in WEEKLY_DATA["part2_okr_structure"].get("objectives", []))
+            print(f"    - OKR工作: {kr_count} 条KR")
+        if WEEKLY_DATA.get("part3_metrics"):
+            print(f"    - 关键指标: {len(WEEKLY_DATA['part3_metrics'].get('sections', {}))} 项")
+    else:
+        print(f"  ✗ 未能加载数据")
+
+    print(f"\n{'='*60}")
+    print("[系统] 启动Chrome...")
+
+    try:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=False)
+            page = await browser.new_page(viewport={"width": 1920, "height": 1080})
+            print("[OK] Chrome已启动")
+
+            print("\n[系统] 访问OKR...")
+            try:
+                await page.goto("https://okr.baidu-int.com", wait_until="domcontentloaded", timeout=30000)
+                print("[OK] 页面已加载")
+            except PlaywrightError as e:
+                if "ERR_NAME_NOT_RESOLVED" in str(e):
+                    print(f"\n[X] 网络错误，无法访问OKR系统")
+                    await browser.close()
+                    return
+                else:
+                    raise
+
+            print("\n" + "="*60)
+            print("[!] 请先登录OKR系统")
+            print("="*60)
+            input("\n登录完成后按 Enter 继续...")
+
+            if 'uuap' in page.url:
+                print("\n[X] 未登录成功")
+                await browser.close()
+                return
+            print("[OK] 登录验证通过")
+
+            result = await submit_weekly_with_retry_v23(
+                page=page,
+                target_date=target_date,
+                dry_run=DRY_RUN,
+                auto_submit=AUTO_SUBMIT
+            )
+
+            if result['status'] == 'login_required':
+                print("\n[!] 需要重新登录")
+            elif result['status'] == 'error':
+                print(f"\n[X] 错误: {result.get('error')}")
+            elif result['status'] == 'preview':
+                print("\n[OK] 预览完成")
+                print("\n要实际提交，请设置:")
+                print("  DRY_RUN = False")
+                print("  AUTO_SUBMIT = True")
+            else:
+                print("\n[OK] 填写流程完成")
+                if AUTO_SUBMIT:
+                    if result.get('results', {}).get('submitted'):
+                        print("[OK] 已成功自动提交并确认")
+                    else:
+                        print("[!] 自动提交可能未完成，请检查页面")
+                else:
+                    print("[!] 请手动点击保存按钮")
+
+            print("\n" + "="*60)
+            input("\n按 Enter 关闭浏览器...")
+            await browser.close()
+
+    except Exception as e:
+        print(f"\n[X] 严重错误: {e}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    asyncio.run(main())

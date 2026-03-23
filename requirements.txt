@@ -1,0 +1,9 @@
+# 核心依赖
+playwright>=1.40.0
+requests>=2.31.0
+pyperclip>=1.8.0
+aiohttp>=3.9.0
+
+# 打包工具（仅在构建时需要）
+pyinstaller>=6.3.0
+pyarmor>=8.3.0

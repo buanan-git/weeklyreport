@@ -1,0 +1,90 @@
+[
+  {
+    "x": 960.0,
+    "y": 502.5,
+    "timestamp": 1773647235.2819917,
+    "date": "2026-03-16 15:47:15",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 960.0,
+    "y": 502.5,
+    "timestamp": 1773647227.3666632,
+    "date": "2026-03-16 15:47:07",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 752.0,
+    "y": 464.0,
+    "timestamp": 1773561973.8971388,
+    "date": "2026-03-15 16:06:13",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 752.0,
+    "y": 464.0,
+    "timestamp": 1773561965.8088968,
+    "date": "2026-03-15 16:06:05",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 752.0,
+    "y": 464.0,
+    "timestamp": 1773561908.9150398,
+    "date": "2026-03-15 16:05:08",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 752.0,
+    "y": 464.0,
+    "timestamp": 1773561900.1092544,
+    "date": "2026-03-15 16:05:00",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 752.0,
+    "y": 464.0,
+    "timestamp": 1773561828.0341656,
+    "date": "2026-03-15 16:03:48",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  },
+  {
+    "x": 752.0,
+    "y": 464.0,
+    "timestamp": 1773561819.557045,
+    "date": "2026-03-15 16:03:39",
+    "metadata": {
+      "method": "quick_selector",
+      "classes": "",
+      "tooltip": ""
+    }
+  }
+]

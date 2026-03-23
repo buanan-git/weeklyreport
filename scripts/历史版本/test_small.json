@@ -1,0 +1,66 @@
+{
+  "report_type": "team_weekly_v10",
+  "generate_time": "2026-03-15T11:30:00.000000",
+  "base_employee": {
+    "id": "s673090",
+    "name": "卜安安"
+  },
+  "member_count": 2,
+  "members": [
+    {
+      "id": "s673090",
+      "name": "卜安安",
+      "status": "success",
+      "order": 1,
+      "is_base": true
+    },
+    {
+      "id": "s801573",
+      "name": "s801573",
+      "status": "success",
+      "order": 2,
+      "is_base": false
+    }
+  ],
+  "content": {
+    "part1_work_summary": [
+      "【整体进展】本周团队整体进展顺利，完成了主要项目交付。",
+      "【关键里程碑】完成了项目A的验收工作。",
+      "【风险管控】目前无重大风险。",
+      "【能力建设】组织了团队培训。",
+      "【文档产出】完成了项目文档编写。",
+      "【会议参与】参加了重要项目会议。"
+    ],
+    "part2_okr_structure": [
+      {
+        "id": "O1",
+        "title": "O1 高效实现项目制收入与毛利的经营目标 正常",
+        "key_results": [
+          {
+            "id": "KR1",
+            "title": "KR1 支持项目管理，实现项目制收入 0%",
+            "weekly_work": [
+              "项目A进展顺利，已完成验收。",
+              "项目B正在按计划推进。"
+            ]
+          }
+        ]
+      }
+    ],
+    "part3_metrics": {
+      "业务核心指标": [],
+      "主要项目": [],
+      "下周重点工作": [
+        "继续推进项目B",
+        "开始项目C的准备工作"
+      ]
+    }
+  },
+  "stats": {
+    "part1_count": 6,
+    "o_count": 1,
+    "kr_count": 1,
+    "weekly_work_count": 2,
+    "metrics_count": 2
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "s673090",
+  "name": "卜安安",
+  "date": "s2026-02-16",
+  "desc": "员工1",
+  "fetch_time": "2026-02-24T16:33:20.419537",
+  "status": "success",
+  "content": {
+    "okr_title": "卜安安的OKR",
+    "part1_work_summary": [
+      "重要会议总结:",
+      "参加了﻿AI增值服务经营会﻿会议等几个会议"
+    ],
+    "part2_okr_structure": [
+      {
+        "level": 1,
+        "id": "O1",
+        "title": "O1 高效实现汽车行业项目制收入与毛利的经营目标 正常",
+        "key_results": [
+          {
+            "level": 2,
+            "id": "KR1",
+            "title": "KR1 支持汽车行业，增强项目管理掌控力，实现项目制收入50M 10%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR2",
+            "title": "KR2 保障汽车行业AI增值服务收入XX亿，毛利 XX亿 10%",
+            "weekly_work": []
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "id": "O2",
+        "title": "O2 交付质量与效率取得阶段性进展，交付成本占收比达**% 正常",
+        "key_results": [
+          {
+            "level": 2,
+            "id": "KR1",
+            "title": "KR1 项目里程碑按期完成率达XX%，项目需求精细化管理试点落地1个项目（吉利MB） 10%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR2",
+            "title": "KR2 完成1个场景化标准交付方案梳理与建设（Agent/合规） 5%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR3",
+            "title": "KR3 交付成本占收比达XX% 5%",
+            "weekly_work": []
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "id": "O3",
+        "title": "O3 打造高度协同、强战斗力、强执行力的自驱型团队，提升客户服务和业务全局意识 正常",
+        "key_results": [
+          {
+            "level": 2,
+            "id": "KR1",
+            "title": "KR1 落地一个客户推进关键战役之-大客户服务机制 10%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR2",
+            "title": "KR2 合理配置资源，提升AI能力应用 10%",
+            "weekly_work": []
+          },
+          {
+            "level": 2,
+            "id": "KR3",
+            "title": "KR3 以客户为中心、以结果为核心，坚持Owner意识落地于业务改善 5%",
+            "weekly_work": []
+          }
+        ]
+      }
+    ],
+    "part3_metrics": {
+      "业务核心指标": [
+        "QTD实际值"
+      ],
+      "主要项目": [],
+      "下周重点工作": []
+    }
+  },
+  "stats": {
+    "text_length": 1760,
+    "part1_count": 2,
+    "o_count": 3,
+    "kr_count": 8,
+    "weekly_work_count": 0,
+    "metrics_count": 1
+  }
+}

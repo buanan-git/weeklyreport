@@ -1,0 +1,196 @@
+{
+  "version": "1.0.0",
+  "description": "团队周报自动化系统主配置文件 - 请根据你的实际情况修改",
+
+  "user": {
+    "my_id": "s673090",
+    "description_my_id": "你的员工ID，用于识别本人周报",
+
+    "staff_ids": [
+      "s673090",
+      "s801573",
+      "s733504",
+      "s929270",
+      "s682083",
+      "s865585",
+      "s811385",
+      "s798268",
+      "s783109"
+    ],
+    "description_staff_ids": "团队所有成员ID列表，包含你自己。脚本将按此顺序抓取和汇总周报"
+  },
+
+  "paths": {
+    "weekly_report_dir": "scripts/WeeklyReport",
+    "description_weekly_report_dir": "周报文件存放目录（相对路径，相对于项目根目录）",
+
+    "llm_response_dir": "scripts/llmRsp",
+    "description_llm_response_dir": "大模型响应文件存放目录",
+
+    "browser_debug_dir": "scripts/browser_debug",
+    "description_browser_debug_dir": "浏览器调试数据目录",
+
+    "prompts_dir": "config/prompts",
+    "description_prompts_dir": "提示词文件存放目录（相对于项目根目录）",
+
+    "history_dir": "config/history",
+    "description_history_dir": "历史记录文件存放目录（相对于项目根目录）"
+  },
+
+  "browser": {
+    "state_file": "config/browser_state.json",
+    "description_state_file": "浏览器状态文件路径（相对于项目根目录）",
+
+    "mode": "headful",
+    "description_mode": "浏览器模式：headless=始终无头，headful=始终有头，auto=智能模式（首次登录用有头，之后用无头）【调试阶段建议用headful】",
+
+    "headless": false,
+    "description_headless": "当mode=headless或auto模式复用状态时使用，true=无头模式，false=有头模式",
+
+    "debug_port_range": [9222, 9299],
+    "description_debug_port_range": "Chrome远程调试端口范围，脚本会自动选择一个可用端口",
+
+    "chrome_paths": {
+      "windows": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "%USERPROFILE%\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+      ],
+      "description_windows": "Windows系统下Chrome浏览器的可能安装路径，脚本会按顺序查找",
+
+      "linux": "google-chrome",
+      "description_linux": "Linux系统下Chrome浏览器的命令名",
+
+      "mac": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "description_mac": "macOS系统下Chrome浏览器的安装路径"
+    },
+
+    "screenshot_on_error": true,
+    "description_screenshot_on_error": "出错时自动截图，便于排查"
+  },
+
+  "weekly_report": {
+    "target_week": 0,
+    "description_target_week": "目标周：0=当周，1=上一周，2=上上周",
+
+    "optimize_prompt": "config/prompts/WeeklyReportOptimizePrompt.md",
+    "description_optimize_prompt": "周报优化提示词文件路径",
+
+    "default_platform": "BO",
+    "description_default_platform": "默认使用的大模型平台：BO=百度-ONEAPI, DS=DeepSeek, DB=豆包, KM=Kimi"
+  },
+
+  "llm_chat": {
+    "prompt_file": "WeeklyReportOptimizePrompt.md",
+    "prompts_dir": "config/prompts",
+    "default_platform": "BO",
+    "timeout": 480,
+    "wait_for_stable": 8,
+    "check_interval": 1.0,
+    "api_key": "",
+    "browser_config": {
+      "mode": "headful",
+      "headless": false
+    }
+  },
+
+  "llm_platforms": {
+    "BO": {
+      "name": "BaiduOneAPI",
+      "description_name": "百度-ONE-API",
+
+      "type": "api",
+      "description_type": "调用方式：web=网页自动化，api=API调用（当前使用）",
+
+      "url": "https://chat.deepseek.com",
+      "description_url": "网页版访问地址",
+
+      "api_config": {
+        "base_url": "https://oneapi-comate.baidu-int.com/v1",
+        "description_base_url": "API基础地址（仅当type=api时使用)",
+        "api_key": "sk-wypbciVYbDuar8JzFd5e56Ee6f8a42A5A9C0979cC038411f",
+        "description_api_key": "你的API密钥，从平台获取（仅当type=api时使用)",
+        "model": "glm-5",
+        "description_model": "模型名称",
+        "timeout": 300,
+        "description_timeout": "API调用超时时间（秒)",
+        "max_tokens": 16000,
+        "description_max_tokens": "最大生成token数",
+        "temperature": 0.7,
+        "description_temperature": "温度参数，控制随机性（0-1之间)",
+        "response_path": "choices.0.message.content",
+        "request_format": "openai"
+      }
+    },
+    "DS": {
+      "name": "DeepSeek",
+      "type": "api",
+      "url": "https://chat.deepseek.com",
+      "api_config": {
+        "base_url": "https://api.deepseek.com",
+        "api_endpoint": "/v1/chat/completions",
+        "api_key": "your-deepseek-api-key-here",
+        "model": "deepseek-chat",
+        "timeout": 300,
+        "max_tokens": 16000,
+        "temperature": 0.7,
+        "response_path": "choices.0.message.content",
+        "request_format": "openai"
+      }
+    },
+    "DB": {
+      "name": "豆包",
+      "type": "api",
+      "url": "https://www.doubao.com/chat",
+      "api_config": {
+        "base_url": "https://api.doubao.com",
+        "api_endpoint": "/v1/chat/completions",
+        "api_key": "your-doubao-api-key-here",
+        "model": "doubao-pro",
+        "timeout": 300,
+        "max_tokens": 16000,
+        "temperature": 0.7,
+        "response_path": "choices.0.message.content",
+        "request_format": "openai"
+      }
+    },
+    "KM": {
+      "name": "Kimi",
+      "type": "api",
+      "url": "https://www.kimi.com",
+      "api_config": {
+        "base_url": "https://api.moonshot.cn",
+        "api_endpoint": "/v1/chat/completions",
+        "api_key": "your-kimi-api-key-here",
+        "model": "moonshot-v1-8k",
+        "timeout": 300,
+        "max_tokens": 16000,
+        "temperature": 0.7,
+        "response_path": "choices.0.message.content",
+        "request_format": "openai"
+      }
+    }
+  },
+
+  "history": {
+    "max_records": 8,
+    "description_max_records": "每种操作保留的历史记录数量",
+
+    "files": {
+      "copy_button": "copy_button_{platform}.json",
+      "upload_icon": "upload_icon_{platform}.json"
+    },
+    "description_files": "历史记录文件命名模板，{platform}会被替换为平台名"
+  },
+
+  "logging": {
+    "debug": false,
+    "description_debug": "是否开启调试模式（true=显示详细调试信息）【正式发布建议false】",
+
+    "save_intermediate_files": true,
+    "description_save_intermediate_files": "是否保存中间文件（原始周报、优化后周报等）",
+
+    "log_level": "DEBUG",
+    "description_log_level": "日志级别：DEBUG/INFO/WARNING/ERROR"
+  }
+}

@@ -1,0 +1,22 @@
+# 周报URL清单
+
+**日期**: s2026-02-02
+
+**生成时间**: 2026-02-11 15:25:21
+
+## 下属周报URL
+
+1. **s801573**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s801573&date=s2026-02-02`
+2. **s733504**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s733504&date=s2026-02-02`
+3. **s682083**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s682083&date=s2026-02-02`
+4. **s929270**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s929270&date=s2026-02-02`
+5. **s798268**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s798268&date=s2026-02-02`
+6. **s811385**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s811385&date=s2026-02-02`
+7. **s865585**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s865585&date=s2026-02-02`
+8. **s783729**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s783729&date=s2026-02-02`
+9. **s400192**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s400192&date=s2026-02-02`
+10. **s823700**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s823700&date=s2026-02-02`
+
+## 本人周报URL
+
+- **s673090**: `https://okr.baidu-int.com/pages/weekly.html#/index?mode=steam&id=s673090&date=s2026-02-02`
