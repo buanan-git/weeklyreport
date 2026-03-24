@@ -1,0 +1,276 @@
+# ============================================
+# OpenClaw JobsOfAndy .gitignore
+# 生成日期: 2026-03-18
+# ============================================
+
+# ==================== 子仓库（独立管理）====================
+# 这些目录有独立的 .git 仓库，不纳入父仓库管理
+JobsOfAndy/TokenLess/
+JobsOfAndy/libs/
+
+# ==================== Python ====================
+# 编译文件
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 分发/打包
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Nuitka 编译输出
+build_nuitka/
+*.pyd
+*.pyi
+
+# ==================== 虚拟环境 ====================
+venv/
+ENV/
+env/
+.venv/
+
+# ==================== 浏览器相关 ====================
+# Chrome 用户数据
+chrome_data/
+browser_debug/
+Default/
+BrowserMetrics/
+
+# Playwright
+playwright-data/
+.playwright/
+
+# ==================== IDE 和编辑器 ====================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ==================== 日志和临时文件 ====================
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# ==================== 操作系统 ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# ==================== 敏感配置文件 ====================
+# 包含 API Key 等敏感信息的配置
+config/local.json
+config/secrets.json
+*.secret.json
+*_local.json
+.env
+.env.*
+!.env.example
+
+# ==================== 项目特定目录 ====================
+# 历史记录
+history/
+*_history/
+
+# 调试截图
+debug_screenshots/
+screenshots/
+
+# LLM 响应输出
+llmRsp/
+llm_response/
+responses/
+
+# 剪贴板内容
+clipboard_contents/
+
+# OpenClaw prompts 缓存
+openclawprompts/
+prompts/
+
+# 周报文件
+WeeklyReport/
+weekly_report/
+
+# 提交的报告
+submitted_reports/
+
+# ==================== 二进制文件 ====================
+*.exe
+*.dll
+*.dylib
+*.a
+*.o
+*.obj
+*.lib
+
+# 模型文件
+*.tflite
+*.pb
+*.onnx
+*.h5
+*.pkl
+*.pickle
+
+# 数据库文件
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.ldb
+leveldb/
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# ==================== 数据文件 ====================
+# Excel
+*.xlsx
+*.xls
+*.xlsm
+
+# CSV 大文件
+# *.csv  # 根据需要决定是否忽略
+
+# JSON 数据文件（可选）
+# *.json  # 根据需要决定
+
+# ==================== Node.js ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ==================== 测试和覆盖率 ====================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# ==================== Jupyter Notebook ====================
+.ipynb_checkpoints
+*.ipynb
+
+# ==================== 其他 ====================
+# 大型媒体文件
+*.mp4
+*.mp3
+*.wav
+*.avi
+*.mov
+
+# 图片（可选保留）
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.svg
+
+# 字体文件
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# Zone.Identifier (Windows 下载标记)
+*:Zone.Identifier
+
+# ==================== 特定项目排除 ====================
+# TokenLess 项目
+TokenLess/browser_debug/
+TokenLess/clipboard_contents/
+TokenLess/debug_screenshots/
+TokenLess/history/
+TokenLess/llmRsp/
+TokenLess/openclawprompts/
+TokenLess/__pycache__/
+
+# BaiduOKR_WeeklyReport 项目
+BaiduOKR_WeeklyReport/chrome_data/
+BaiduOKR_WeeklyReport/browser_debug/
+BaiduOKR_WeeklyReport/build/
+BaiduOKR_WeeklyReport/build_nuitka/
+BaiduOKR_WeeklyReport/dist/
+BaiduOKR_WeeklyReport/python/
+BaiduOKR_WeeklyReport/release/
+BaiduOKR_WeeklyReport/scripts/browser_debug/
+BaiduOKR_WeeklyReport/scripts/__pycache__/
+
+# libs 共享库
+libs/__pycache__/
+libs/history/
+
+# ==================== 保留的重要文件 ====================
+# 即使上级目录被忽略，这些文件仍然跟踪
+!.gitkeep
+!README.md
+!LICENSE
+!CLAUDE.md
+!USER_MANUAL.md
